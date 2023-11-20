@@ -81,16 +81,16 @@ WSGI_APPLICATION = 'Blog.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'primary': {
+    'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'railway',
         'USER': 'postgres',
-        'HOST': 'viaduct.proxy.rlwy.net',
+        'HOST': '35.214.179.121',
         'PORT': '40465',
         'PASSWORD': 'DFDBdfeAE5523EAc12BagAC4Gc5aDEeD',
     },
     
-    'default': {
+    'primary': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'database.sqlite3',
     }

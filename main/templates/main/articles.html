@@ -11,10 +11,16 @@
             <p>{{ article.description }}</p>
         </div>
         <div>
-            {% if user == article.author %}
+            {% if user == article.author or perms.main.delete_article %}
             <form method="POST">
                 {% csrf_token %}
                 <button type="submit" class="btn btn-danger" name="post-id" value="{{article.id}}">Delete</button>
+            </form>
+            {% endif %}
+            {% if user.is_staff%}
+            <form method="POST">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-warning" name="user-id" value="{{article.author.id}}">Ban User</button>
             </form>
             {% endif %}
         </div>
