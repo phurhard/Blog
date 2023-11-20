@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-_s)9*lznp5kvg6pfpv4_a1=k97otivzv(9-44%i598@6200xed'
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -83,13 +87,13 @@ WSGI_APPLICATION = 'Blog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'HOST': '35.214.179.121',
-        'PORT': '40465',
-        'PASSWORD': 'DFDBdfeAE5523EAc12BagAC4Gc5aDEeD',
+        'NAME': os.getenv('NAME'),
+        'USER': os.getenv('USER'),
+        'HOST': os.getenv('HOST'),
+        'PORT': os.getenv('PORT'),
+        'PASSWORD': os.getenv('PASSWORD'),
     },
-    
+
     'primary': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'database.sqlite3',
